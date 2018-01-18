@@ -6,17 +6,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PhoneComponent } from './components/phone/phone.component';
 import { PhonePipe } from './pipes/phone.pipe';
+import { FeatureToggleGuardGuard } from './guards/feature-toggle-guard.guard';
+import { HomeComponent } from './home/home.component';
 
 
 const appRoutes: Routes = [
-  { path: 'phone', component: PhoneComponent, data: { tink: 'tinker bell'} },
+  {
+    path: 'phone', 
+    canActivate: [
+      FeatureToggleGuardGuard
+    ],
+    component: PhoneComponent, 
+    data: { tink: 'tinker bell'}
+  },
+  {
+    path: '**', 
+    component: HomeComponent
+  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     PhoneComponent,
-    PhonePipe
+    PhonePipe,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -33,7 +47,11 @@ const appRoutes: Routes = [
   exports: [
     
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    FeatureToggleGuardGuard
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

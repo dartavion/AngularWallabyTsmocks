@@ -13,8 +13,4 @@ describe('PhonePipe', () => {
   it('transforms valid phone', () => {
     expect(pipe.transform('5858654167')).toEqual('(585) 865-4167');
   });
-
-  it('adds number', () => {
-    expect(pipe.add(2, 2)).toEqual(4);
-  });
 });
