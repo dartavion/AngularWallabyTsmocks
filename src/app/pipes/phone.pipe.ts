@@ -4,9 +4,13 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'phone'
 })
 export class PhonePipe implements PipeTransform {
-
-  transform(value: any, args?: any): any {
-    return null;
+  transform(phone: any, args?: any): any {
+    console.log(phone);
+    return phone.replace(/\D+/g, '')
+     .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
   }
 
+  add(a, b) {
+    return a + b;
+  }
 }

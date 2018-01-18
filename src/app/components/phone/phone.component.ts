@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./phone.component.css']
 })
 export class PhoneComponent implements OnInit {
-
+  item: any = {value: '0000000000'};
   constructor() { }
 
   ngOnInit() {

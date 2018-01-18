@@ -1,3 +1,5 @@
-<p>
-  phone works!
-</p>
+<div>
+  <input maxLength="13" type="text" [ngModel]="item.value | phone" 
+  (ngModelChange)="item.value=$event">
+  {{item.value | phone}}
+</div>
