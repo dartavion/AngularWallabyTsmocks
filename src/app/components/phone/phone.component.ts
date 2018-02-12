@@ -10,8 +10,8 @@ export class PhoneComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.add(2, 1);
   }
-
 
   add(a, b) {
     return a + b;
