@@ -57,7 +57,7 @@ module.exports = function (config) {
             low: 50,
             break: 0
         },
-        logLevel: 'debug',
+        logLevel: 'info',
         timeoutMs: 10000
     });
 };
