@@ -2,6 +2,7 @@ const getAppFromConfig = require('@angular/cli/utilities/app-utils').getAppFromC
 const appConfig = getAppFromConfig();
 
 module.exports = function (config) {
+    console.log('boogey', config);
     config.set({
         files: [
             // Exclude files so we can include only particular files later on
@@ -49,14 +50,14 @@ module.exports = function (config) {
         },
         tsconfigFile: 'tsconfig.json',
         webpack: {
-            configFile: 'webpack-stryker.conf.js'
+            configFile: 'webpack.stryker.conf.js'
         },
         thresholds: {
             high: 70,
             low: 50,
             break: 0
         },
-        logLevel: 'info',
+        logLevel: 'debug',
         timeoutMs: 10000
     });
 };
