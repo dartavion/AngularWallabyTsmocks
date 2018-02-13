@@ -1,0 +1,102 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Happy flow V3",
+    "line": 2,
+    "id": "happy-flow-v3",
+    "tags": [
+      {
+        "name": "@example",
+        "line": 1
+      },
+      {
+        "name": "@happy-flow",
+        "line": 1
+      },
+      {
+        "name": "@angular",
+        "line": 1
+      }
+    ],
+    "uri": "e2e/features/example.feature",
+    "elements": [
+      {
+        "id": "happy-flow-v3;as-a-visitor-i-want-to-add-a-formatted-phone-number",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "As a visitor I want to add a formatted phone number",
+        "tags": [
+          {
+            "name": "@example",
+            "line": 1
+          },
+          {
+            "name": "@happy-flow",
+            "line": 1
+          },
+          {
+            "name": "@angular",
+            "line": 1
+          },
+          {
+            "name": "@visitor",
+            "line": 7
+          },
+          {
+            "name": "@julie",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I visit localhost",
+            "match": {
+              "location": "e2e/features/example.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 673
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "I submit the phone number \"5858651122\"",
+            "match": {
+              "location": "e2e/features/example.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 641
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "I see the formatted phone number \"585-865-1122\"",
+            "result": {
+              "status": "undefined"
+            }
+          }
+        ]
+      }
+    ],
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "64.0.3282.140"
+      },
+      "device": "local development machine",
+      "platform": {
+        "name": "osx",
+        "version": "10.12.6"
+      }
+    }
+  }
+]

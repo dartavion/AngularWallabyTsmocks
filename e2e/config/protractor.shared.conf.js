@@ -73,8 +73,8 @@ exports.config = {
  */
 function getFeatureFiles() {
     if (argv.feature) {
-        return argv.feature.split(',').map(feature => `${process.cwd()}/e2e-tests/**/${feature}.feature`);
+        return argv.feature.split(',').map(feature => `${process.cwd()}/e2e/**/${feature}.feature`);
     }
 
-    return [`${process.cwd()}/e2e-tests/**/*.feature`];
+    return [`${process.cwd()}/e2e/**/*.feature`];
 }
