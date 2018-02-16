@@ -35,32 +35,3 @@ describe('PhoneComponent', () => {
     expect(component.add(2, 2)).toEqual(4);
   });
 });
-var someObject = {
-  submit: function (e) {
-    console.log('Submit', e);
-  }
-};
-
-window.addEventListener('message', function(e) {
-  if (typeof e.data === 'object') {
-    someObject.submit(e);
-    console.log('BLAH:::::::::::::::::::');
-  }
-}, false);
-
-// Test
-
-describe('window.postMessage', function () {
-
-  beforeEach(function(done) {  
-    spyOn(someObject, 'submit').and.callFake(function () {
-      done();
-    });
-    window.postMessage({boo: 'test'}, '*');
-  });
-
-  it('should submit on a sent message', function () {
-    expect(someObject.submit).toHaveBeenCalled();
-  });
-
-});
