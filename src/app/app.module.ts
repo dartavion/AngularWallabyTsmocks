@@ -8,6 +8,8 @@ import { PhoneComponent } from './components/phone/phone.component';
 import { PhonePipe } from './pipes/phone.pipe';
 import { FeatureToggleGuardGuard } from './guards/feature-toggle-guard.guard';
 import { HomeComponent } from './home/home.component';
+import { SwapiService } from './services/swapi.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   entryComponents: [
     AppComponent
@@ -48,7 +51,8 @@ const appRoutes: Routes = [
     
   ],
   providers: [
-    FeatureToggleGuardGuard
+    FeatureToggleGuardGuard,
+    SwapiService
   ],
   bootstrap: [
     AppComponent

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwapiService } from '../services/swapi.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private swapi: SwapiService) { }
 
   ngOnInit() {
+    this.swapi.getCharacters()
+      .subscribe((data) => {
+        console.log('Data::::', data);
+      });
   }
 
 }
