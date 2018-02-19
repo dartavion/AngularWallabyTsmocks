@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PhoneComponent } from './components/phone/phone.component';
@@ -9,8 +10,6 @@ import { PhonePipe } from './pipes/phone.pipe';
 import { FeatureToggleGuardGuard } from './guards/feature-toggle-guard.guard';
 import { HomeComponent } from './home/home.component';
 import { SwapiService } from './services/swapi.service';
-import { HttpClientModule } from '@angular/common/http';
-
 
 const appRoutes: Routes = [
   {
@@ -48,7 +47,6 @@ const appRoutes: Routes = [
     AppComponent
   ],
   exports: [
-    
   ],
   providers: [
     FeatureToggleGuardGuard,
