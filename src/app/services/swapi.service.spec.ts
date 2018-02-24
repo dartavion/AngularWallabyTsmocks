@@ -37,9 +37,9 @@ describe('SwapiService', () => {
     service = TestBed.get(SwapiService);
   });
 
-  it('should be created', inject([SwapiService], (service: SwapiService) => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
   it('gets characters', () => {
     // service.getCharacters()

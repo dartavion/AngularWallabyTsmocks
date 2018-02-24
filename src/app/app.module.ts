@@ -10,19 +10,53 @@ import { PhonePipe } from './pipes/phone.pipe';
 import { FeatureToggleGuardGuard } from './guards/feature-toggle-guard.guard';
 import { HomeComponent } from './home/home.component';
 import { SwapiService } from './services/swapi.service';
+import { CharacterComponent } from './components/character/character.component';
+import { PlanetComponent } from './components/planet/planet.component';
+import { CommingSoonComponent } from './components/comming-soon/comming-soon.component';
+import { FourOfourComponent } from './components/four-ofour/four-ofour.component';
+import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
 
 const appRoutes: Routes = [
+  // { path: '**', redirectTo: '/404' },
+  // { path: '404', component: FourOfourComponent },
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'phone', 
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+ },
+  {
+    path: 'phone',
+    component: PhoneComponent,
+    data: { tink: 'tinker bell' }
+  },
+  {
+    path: 'coming-soon',
+    component: CommingSoonComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
     canActivate: [
       FeatureToggleGuardGuard
     ],
-    component: PhoneComponent, 
-    data: { tink: 'tinker bell'}
-  },
-  {
-    path: '**', 
-    component: HomeComponent
+    children: [
+      {
+        path: 'characters',
+        component: CharacterComponent,
+        outlet: 'characters'
+      },
+      {
+        path: 'character-details/:character-name',
+        component: CharacterDetailComponent,
+        outlet: 'characterDetails'
+      },
+      {
+        path: 'planet',
+        component: PlanetComponent,
+        outlet: 'planets'
+      }
+    ]
   }
 ];
 
@@ -31,7 +65,12 @@ const appRoutes: Routes = [
     AppComponent,
     PhoneComponent,
     PhonePipe,
-    HomeComponent
+    HomeComponent,
+    CharacterComponent,
+    PlanetComponent,
+    CommingSoonComponent,
+    FourOfourComponent,
+    CharacterDetailComponent
   ],
   imports: [
     RouterModule.forRoot(

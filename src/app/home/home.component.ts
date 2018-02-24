@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwapiService } from '../services/swapi.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,31 +8,11 @@ import { SwapiService } from '../services/swapi.service';
 })
 export class HomeComponent implements OnInit {
 
-  private nextUrl;
-  private previousUrl;
-  private characters;
-
-  constructor(private swapi: SwapiService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.getCharacters();
-  }
-
-  next() {
-    this.getCharacters(this.nextUrl);
-  }
-
-  previous() {
-    this.getCharacters(this.previousUrl);
-  }
-
-  private getCharacters(url?: string) {
-    this.swapi.getCharacters(url)
-      .subscribe((data) => {
-        console.log('Data::::', data);
-        this.nextUrl = data.next;
-        this.previousUrl = data.previous;
-        this.characters = data.results;
-    });
+    this.router.navigate(['/home', { outlets: { characters: 'characters' } }], { skipLocationChange: true });
+    // this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true });
+    // (characterDetails:character-details/r2//characters:characters)
   }
 }

@@ -6,24 +6,44 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class SwapiService {
 
-  private baseUrl = 'https://swapi.co/api'
+  private _hasToggle: boolean;
 
-  constructor(private http: HttpClient) { }
+  private baseUrl = 'https://swapi.co/api';
+
+  constructor(private http: HttpClient) {
+    this.hasToggle = true;
+  }
+
+  public get hasToggle(): boolean {
+    return this._hasToggle;
+  }
+
+  public set hasToggle(value: boolean) {
+    this._hasToggle = value;
+  }
 
   getCharacters(url?: string): Observable<any> {
     const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
-    const path = url ? url : `${this.baseUrl}/people/?search`
+      .set('Content-Type', 'application/json');
+    const path = url ? url : `${this.baseUrl}/people/?search`;
     return this.http
-      .get(path, {...headers});
+      .get(path, { ...headers });
   }
 
-  getCharacter(characterId: string) {
+  getCharacterByName(url?: string, name?: string): Observable<any> {
     const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
-    const path = `${this.baseUrl}api/people`
+      .set('Content-Type', 'application/json');
+    const path = url ? url : `${this.baseUrl}/people/?search=${name}`;
     return this.http
-      .get(`${this.baseUrl}/api/people${characterId}`, {...headers});
+      .get(path, { ...headers });
+  }
+
+  getCharacterById(characterId: string) {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+    const path = `${this.baseUrl}api/people`;
+    return this.http
+      .get(`${this.baseUrl}/api/people${characterId}`, { ...headers });
   }
 }
 

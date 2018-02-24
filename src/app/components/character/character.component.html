@@ -1,0 +1,9 @@
+<div class=action-buttons>
+  <button (click)="previous()">Previous</button>
+  <button (click)="next()">Next</button>
+</div>
+<ul>
+  <li *ngFor="let character of characters">
+    <a (click)="goTo(character.name)">{{character.name}}</a>
+  </li>
+</ul>
