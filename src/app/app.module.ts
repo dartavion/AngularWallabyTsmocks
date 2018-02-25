@@ -15,14 +15,12 @@ import { PlanetComponent } from './components/planet/planet.component';
 import { CommingSoonComponent } from './components/comming-soon/comming-soon.component';
 import { FourOfourComponent } from './components/four-ofour/four-ofour.component';
 import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
+import { FeatureService } from './services/feature.service';
 
 const appRoutes: Routes = [
-  // { path: '**', redirectTo: '/404' },
-  // { path: '404', component: FourOfourComponent },
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: 'home',
     pathMatch: 'full'
  },
   {
@@ -57,7 +55,9 @@ const appRoutes: Routes = [
         outlet: 'planets'
       }
     ]
-  }
+  },
+  { path: '**', redirectTo: '/404' },
+  { path: '404', component: FourOfourComponent }
 ];
 
 @NgModule({
@@ -89,6 +89,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     FeatureToggleGuardGuard,
+    FeatureService,
     SwapiService
   ],
   bootstrap: [

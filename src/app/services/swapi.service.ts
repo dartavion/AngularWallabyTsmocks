@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { FeatureService } from './feature.service';
 
 
 @Injectable()
@@ -10,9 +11,7 @@ export class SwapiService {
 
   private baseUrl = 'https://swapi.co/api';
 
-  constructor(private http: HttpClient) {
-    this.hasToggle = true;
-  }
+  constructor(private http: HttpClient) {}
 
   public get hasToggle(): boolean {
     return this._hasToggle;

@@ -20,7 +20,6 @@ export class CharacterDetailComponent implements OnInit {
   private getCharacterByName(url?: string, name?: string) {
     this.swapi.getCharacterByName(url, name)
       .subscribe((data) => {
-        console.log('Data::::', data);
         this.character = data.results[0];
     });
   }

@@ -15,11 +15,9 @@ export class CharacterComponent implements OnInit {
   constructor(private swapi: SwapiService, private router: Router) { }
 
   ngOnInit() {
-    console.log('called');
     this.getCharacters();
   }
   goTo(character: string) {
-    // ['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true })
     this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', character] } }], { skipLocationChange: true });
   }
   next() {
@@ -33,11 +31,10 @@ export class CharacterComponent implements OnInit {
   private getCharacters(url?: string) {
     this.swapi.getCharacters(url)
       .subscribe((data) => {
-        console.log('Data::::', data);
         this.nextUrl = data.next;
         this.previousUrl = data.previous;
         this.characters = data.results;
-        this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true });
+        this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'Luke'] } }], { skipLocationChange: true });
     });
   }
 
