@@ -1,9 +1,8 @@
 
 <button (click)="setStorage()">set feature toggle to storage</button>
-<button (click)="getStorage()">get feature toggle from storage</button>
 <button (click)="removeStorage()">remove feature toggle from storage</button>
 
-<button routerLink="/">home</button>
+<button [routerLink]="['/home']">home</button>
 <button routerLink="/phone">phone</button>
 
 <router-outlet></router-outlet>

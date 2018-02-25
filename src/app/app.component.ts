@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { SwapiService } from './services/swapi.service';
 import { FeatureService } from './services/feature.service';
+import 'rxjs/add/operator/pairwise';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +12,29 @@ import { FeatureService } from './services/feature.service';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  constructor(private featureService: FeatureService, private swapi: SwapiService) {}
+  constructor(
+    private router: Router,
+    private featureService: FeatureService, 
+    private swapi: SwapiService) {}
 
   ngOnInit() {
-    this.featureService
-      .getToggle()
-      .subscribe(this.hasFeature);
+    this.checkFeature();
+    this.router
+      .events
+      .pairwise()
+      .subscribe((event) => {
+        this.checkFeature();
+    });
   }
 
+  checkFeature() {
+    this.featureService
+        .getToggle()
+        .subscribe(this.hasFeature); 
+  }
+  
   hasFeature = (data) => {
+    console.log('monkey')
     if (data[0]) {
       return this.swapi.hasToggle = true;
     }
