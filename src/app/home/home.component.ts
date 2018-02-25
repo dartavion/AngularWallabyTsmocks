@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   private getCharacters(url?: string) {
+    console.log('CALLED::::::::::::::::::::::::::::');
     this.swapi.getCharacters(url)
       .subscribe((data) => {
         console.log('Data::::', data);

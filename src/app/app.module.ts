@@ -10,18 +10,19 @@ import { PhonePipe } from './pipes/phone.pipe';
 import { FeatureToggleGuardGuard } from './guards/feature-toggle-guard.guard';
 import { HomeComponent } from './home/home.component';
 import { SwapiService } from './services/swapi.service';
+import { FakeBackendProvider } from './services/fake-backend.service';
 
 const appRoutes: Routes = [
   {
-    path: 'phone', 
+    path: 'phone',
     canActivate: [
       FeatureToggleGuardGuard
     ],
-    component: PhoneComponent, 
+    component: PhoneComponent,
     data: { tink: 'tinker bell'}
   },
   {
-    path: '**', 
+    path: '**',
     component: HomeComponent
   }
 ];
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     FeatureToggleGuardGuard,
+    FakeBackendProvider,
     SwapiService
   ],
   bootstrap: [
