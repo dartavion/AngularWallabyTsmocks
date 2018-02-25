@@ -9,12 +9,6 @@ export class PhoneComponent implements OnInit {
   item: any = {value: '0000000000'};
   constructor() { }
 
-  ngOnInit() {
-    this.add(2, 1);
-  }
-
-  add(a, b) {
-    return a + b;
-  }
+  ngOnInit() {}
 
 }

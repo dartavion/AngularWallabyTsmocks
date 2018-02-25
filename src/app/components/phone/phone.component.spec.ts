@@ -30,8 +30,4 @@ describe('PhoneComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('adds', () => {
-    expect(component.add(2, 2)).toEqual(4);
-  });
 });
