@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
   }
   
   hasFeature = (data) => {
-    console.log('monkey')
     if (data[0]) {
       return this.swapi.hasToggle = true;
     }
