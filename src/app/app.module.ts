@@ -12,6 +12,14 @@ import { HomeComponent } from './home/home.component';
 import { SwapiService } from './services/swapi.service';
 import { FakeBackendProvider } from './services/fake-backend.service';
 
+import { StoreModule, MetaReducer } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+// not used in production
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+export const metaReducers: MetaReducer<any>[] = [];
+import { reducers } from './store/reducers';
 const appRoutes: Routes = [
   {
     path: 'phone',
@@ -39,6 +47,9 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true }
     ),
+    StoreModule.forRoot({}, { metaReducers }),
+    StoreModule.forFeature('starwars', reducers),
+    EffectsModule.forRoot([]),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
