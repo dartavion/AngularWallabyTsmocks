@@ -13,15 +13,15 @@ import { SwapiService } from './services/swapi.service';
 
 const appRoutes: Routes = [
   {
-    path: 'phone', 
+    path: 'phone',
     canActivate: [
       FeatureToggleGuardGuard
     ],
-    component: PhoneComponent, 
+    component: PhoneComponent,
     data: { tink: 'tinker bell'}
   },
   {
-    path: '**', 
+    path: '**',
     component: HomeComponent
   }
 ];
