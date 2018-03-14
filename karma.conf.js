@@ -1,9 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-const getAppFromConfig = require('@angular/cli/utilities/app-utils').getAppFromConfig;
-const appConfig = getAppFromConfig();
-
 module.exports = function (config) {
   config.set({
     basePath: '',

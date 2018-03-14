@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CharacterDetailComponent } from './character-detail.component';
+import { SwapiService } from '../../services/swapi.service';
 
 describe('CharacterDetailComponent', () => {
   let component: CharacterDetailComponent;
@@ -8,7 +10,14 @@ describe('CharacterDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CharacterDetailComponent ]
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
+      declarations: [ CharacterDetailComponent ],
+      providers: [
+        SwapiService
+      ]
     })
     .compileComponents();
   }));

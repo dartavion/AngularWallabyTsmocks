@@ -5,6 +5,7 @@ import { SwapiService } from '../services/swapi.service';
 import { PhonePipe } from '../pipes/phone.pipe';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,16 +13,17 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         HomeComponent,
         PhonePipe
       ],
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        RouterTestingModule
       ],
       providers: [
         {provide: SwapiService, useValue: {
-          getCharacters: () => { return Observable.of([])}
+          getCharacters: () =>  Observable.of([])
         }}
       ]
     })
