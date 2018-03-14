@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SwapiService } from '../../services/swapi.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-character',
@@ -11,12 +12,16 @@ export class CharacterComponent implements OnInit {
   private nextUrl;
   private previousUrl;
   private characters;
+  private behaviorSubject: BehaviorSubject<string> = new BehaviorSubject(null);
+  public savedSubject = this.behaviorSubject.asObservable();
+  public subject = '';
 
-  constructor(private swapi: SwapiService, private router: Router) { }
+  constructor(private swapi: SwapiService, private router: Router) {}
 
   ngOnInit() {
     console.log('called');
     this.getCharacters();
+    this.behaviorSubject.next('monkey');
   }
   goTo(character: string) {
     // ['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true })
@@ -24,6 +29,10 @@ export class CharacterComponent implements OnInit {
   }
   next() {
     this.getCharacters(this.nextUrl);
+  }
+
+  getSubject() {
+    this.behaviorSubject.next('tinkery');
   }
 
   previous() {

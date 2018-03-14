@@ -4,6 +4,7 @@ import { CharacterComponent } from './character.component';
 import { SwapiService } from '../../services/swapi.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import 'rxjs/add/operator/take';
 
 describe('CharacterComponent', () => {
   let component: CharacterComponent;
@@ -31,5 +32,14 @@ describe('CharacterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('uses Behavior Subject', () => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    component.savedSubject.take(1).subscribe(subject => expect(subject).toEqual('monkey'));
+    component.getSubject();
+    fixture.detectChanges();
+    component.savedSubject.subscribe(subject => expect(subject).toEqual('tinkery'));
   });
 });
