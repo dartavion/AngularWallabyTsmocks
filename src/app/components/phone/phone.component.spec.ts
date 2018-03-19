@@ -34,6 +34,7 @@ describe('PhoneComponent', () => {
 
   it('adds', () => {
     const el = fixture.debugElement.query(By.css('.phone-input'));
+    fixture.detectChanges();
     expect(el.attributes.maxLength).toEqual('13');
     expect(component.add(2, 2)).toEqual(4);
   });
