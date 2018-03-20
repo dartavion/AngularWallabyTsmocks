@@ -25,7 +25,7 @@ export class CharacterComponent implements OnInit {
   }
   goTo(character: string) {
     // ['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true })
-    this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', character] } }], { skipLocationChange: true });
+    // this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', character] } }], { skipLocationChange: true });
   }
   next() {
     this.getCharacters(this.nextUrl);
@@ -45,7 +45,7 @@ export class CharacterComponent implements OnInit {
         this.nextUrl = data.next;
         this.previousUrl = data.previous;
         this.characters = data.results;
-        this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true });
+        // this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true });
     });
   }
 }
