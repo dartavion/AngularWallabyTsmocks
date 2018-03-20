@@ -20,7 +20,6 @@ export class CharacterComponent implements OnInit {
   constructor(public swapi: SwapiService, private router: Router) {}
 
   ngOnInit() {
-    console.log('BLAH::::::::::::::::::::::::::::::');
     this.getCharacters();
     this.behaviorSubject.next('test');
   }
