@@ -13,15 +13,16 @@ export class CharacterComponent implements OnInit {
   private previousUrl;
   private characters;
   private behaviorSubject: BehaviorSubject<string> = new BehaviorSubject(null);
+
   public savedSubject = this.behaviorSubject.asObservable();
   public subject = '';
 
-  constructor(private swapi: SwapiService, private router: Router) {}
+  constructor(public swapi: SwapiService, private router: Router) {}
 
   ngOnInit() {
-    console.log('called');
+    console.log('BLAH::::::::::::::::::::::::::::::');
     this.getCharacters();
-    this.behaviorSubject.next('monkey');
+    this.behaviorSubject.next('test');
   }
   goTo(character: string) {
     // ['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true })
@@ -32,7 +33,7 @@ export class CharacterComponent implements OnInit {
   }
 
   getSubject() {
-    this.behaviorSubject.next('tinkery');
+    this.behaviorSubject.next('first');
   }
 
   previous() {
@@ -40,14 +41,12 @@ export class CharacterComponent implements OnInit {
   }
 
   private getCharacters(url?: string) {
-    this.swapi.getCharacters(url)
+    return this.swapi.getCharacters(url)
       .subscribe((data) => {
-        console.log('Data::::', data);
         this.nextUrl = data.next;
         this.previousUrl = data.previous;
         this.characters = data.results;
         this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true });
     });
   }
-
 }

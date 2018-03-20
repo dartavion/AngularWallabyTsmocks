@@ -19,7 +19,7 @@ describe('WindowPostMessageService', () => {
     service = bed.get(WindowPostMessageService);
   });
 
-  beforeEach(async(() => {  
+  beforeEach(async(() => {
     spyOn(service, 'postMessage').and.callThrough();
     window.postMessage({boo: 'test'}, '*');
   }));
@@ -27,7 +27,7 @@ describe('WindowPostMessageService', () => {
   it('should be created', inject([WindowPostMessageService], (service: WindowPostMessageService) => {
     expect(service).toBeTruthy();
   }));
-  
+
   describe('window.postMessage', function () {
     it('should submit on a sent message', function () {
       expect(service.postMessage).toHaveBeenCalled();
