@@ -63,6 +63,7 @@
     "protractor-cucumber-framework": "~4.1.1",
     "protractor-flake": "^3.0.0",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.1.0",
+    "puppeteer": "^1.2.0",
     "ts-node": "^3.2.2",
     "tslint": "^5.7.0",
     "typescript": "^2.6.2",
