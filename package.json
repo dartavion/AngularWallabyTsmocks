@@ -45,7 +45,7 @@
     "awesome-typescript-loader": "^3.4.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "codelyzer": "^3.2.2",
+    "codelyzer": "^4.1.0",
     "cucumber": "~3.0.1",
     "electron": "^1.7.11",
     "fs-extra": "^4.0.1",

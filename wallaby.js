@@ -1,7 +1,7 @@
-var wallabyWebpack = require('wallaby-webpack');
-var path = require('path');
+let wallabyWebpack = require('wallaby-webpack');
+let path = require('path');
 
-var compilerOptions = Object.assign(
+let compilerOptions = Object.assign(
   require('./tsconfig.json').compilerOptions,
   require('./src/tsconfig.spec.json').compilerOptions);
 

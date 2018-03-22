@@ -3,12 +3,12 @@ import { TestBed, inject, async } from '@angular/core/testing';
 import { WindowPostMessageService } from './window-post-message.service';
 
 describe('WindowPostMessageService', () => {
-  let service: WindowPostMessageService
+  let service: WindowPostMessageService;
 
   window.addEventListener('message', function(event) {
     if (typeof event.data === 'object') {
       service.postMessage(event);
-      expect(event.data).toEqual({boo: 'test'})
+      expect(event.data).toEqual({boo: 'test'});
     }
   }, false);
 
@@ -24,9 +24,9 @@ describe('WindowPostMessageService', () => {
     window.postMessage({boo: 'test'}, '*');
   }));
 
-  it('should be created', inject([WindowPostMessageService], (service: WindowPostMessageService) => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
   describe('window.postMessage', function () {
     it('should submit on a sent message', function () {
