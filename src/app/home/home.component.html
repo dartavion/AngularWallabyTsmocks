@@ -1,9 +1,15 @@
-<ul>
-  <li *ngFor="let character of characters">
-    {{character.name}}
-  </li>
-</ul>
-<div>
-  <button (click)="next()">Next</button>
-  <button (click)="previous()">Previous</button>
+<div class="wrapper">
+    <!-- <a [routerLink]="[{ outlets: { characters: 'characters' } }]">Open</a>
+    <a [routerLink]="[{ outlets: { characterDetails: 'character-details/r2' } }]">Open</a> -->
+  <div class="box a">
+    <router-outlet name="characters"></router-outlet>
+  </div>
+  <div class="box b">
+    character details
+    <router-outlet name="characterDetails"></router-outlet>
+  </div>
+  <div class="box c">
+    <router-outlet name="planets"></router-outlet>
+  </div>
+  <div class="box d">D</div>
 </div>

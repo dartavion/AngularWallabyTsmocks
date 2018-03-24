@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { FakeBackendService } from './fake-backend.service';
 
-describe('FakeBackendService', () => {
+xdescribe('FakeBackendService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [FakeBackendService]
