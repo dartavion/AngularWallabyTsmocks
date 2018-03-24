@@ -3,43 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { EgHttpService } from './eg-http.service';
+import * as data from '../../api/json/star-wars.json';
 
-const data = [
-  {
-    name: {
-      first: 'ted',
-      last: 'smith',
-      title: 'something'
-    },
-    address: {
-      street: 'Test',
-      city: 'Rochester',
-      state: 'NY',
-      zip: '12121'
-    },
-    phone: {
-      home: '1231231231',
-      work: '2323232321'
-    }
-  },
-  {
-    name: {
-      first: 'Mike',
-      last: 'Merny',
-      title: 'something'
-    },
-    address: {
-      street: 'Other',
-      city: 'Rochester',
-      state: 'NY',
-      zip: '34334'
-    },
-    phone: {
-      home: '1231231231',
-      work: '2323232321'
-    }
-  }
-];
 describe('EgHttpService', () => {
   let service: EgHttpService,
     http: HttpClient,
@@ -70,10 +35,37 @@ describe('EgHttpService', () => {
 
   it('is a real example', () => {
     service
-      .get()
+      .get();
+
+    service
+      .getNames()
       .subscribe((next) => {
-        expect(next).toEqual(['ted', 'Mike']);
+        expect(next).toEqual([
+          'Luke Skywalker',
+          'C-3PO',
+          'R2-D2',
+          'Darth Vader',
+          'Leia Organa',
+          'Owen Lars',
+          'Beru Whitesun lars',
+          'R5-D4',
+          'Biggs Darklighter',
+          'Obi-Wan Kenobi' ]);
       });
+
+    service
+      .getGenders('male')
+      .subscribe(next => expect(next).toEqual(5));
+    service
+      .getGenders('female')
+      .subscribe(next => expect(next).toEqual(2));
+    service
+      .getGenders('n/a')
+      .subscribe(next => expect(next).toEqual(3));
+    service
+      .getCharacter('Luke Skywalker')
+      .subscribe(next => expect(next.name).toEqual('Luke Skywalker'));
+
     backend
       .match({
         url: 'https://swapi.co/api',
