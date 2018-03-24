@@ -8,6 +8,7 @@ import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/toArray';
 import 'rxjs/add/operator/find';
 import 'rxjs/add/operator/switchMap';
+import { Character } from '../models/star-wars.model';
 
 @Injectable()
 export class EgHttpService {
@@ -17,7 +18,7 @@ export class EgHttpService {
 
   constructor(private http: HttpClient) { }
 
-  getNames(): Observable {
+  getNames(): Observable<Character> {
     return this
       .characters$
       .concatMap(characters =>
@@ -25,7 +26,7 @@ export class EgHttpService {
           .of(characters.map(character => character.name)));
   }
 
-  getGenders(gender: string): Observable {
+  getGenders(gender: string): Observable<Character> {
     return this
       .characters$
       .concatMap(characters =>
@@ -33,16 +34,16 @@ export class EgHttpService {
           .of(characters.filter(character => character.gender === gender).length));
   }
 
-  getCharacter(character: string): Observable {
+  getCharacter(character: string): Observable<Character> {
     return this
       .characters$
       .switchMap(data => data)
-      .find(creature => creature.name === character);
+      .find((creature: Character) => creature.name === character);
   }
 
   get() {
     return this.http
       .get(this.baseUrl)
-      .subscribe(data => this.characters.next(data.results));
+      .subscribe((data: any) => this.characters.next(data.results));
   }
 }

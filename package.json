@@ -33,9 +33,9 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^1.7.1",
     "@angular-devkit/core": "^0.4.6",
     "@angular-devkit/schematics": "^0.4.6",
+    "@angular/cli": "^1.7.1",
     "@angular/language-service": "^5.2.0",
     "@ngrx/effects": "^5.2.0",
     "@ngrx/entity": "^5.2.0",
@@ -43,6 +43,8 @@
     "@ngrx/schematics": "^5.2.0",
     "@ngrx/store": "^5.2.0",
     "@ngrx/store-devtools": "^5.2.0",
+    "@schematics/angular": "^0.4.6",
+    "@schematics/package-update": "^0.4.6",
     "@types/chai": "^4.0.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/cucumber": "^2.0.3",
@@ -50,8 +52,6 @@
     "@types/jasmine": "^2.5.54",
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^6.0.96",
-    "@schematics/angular": "^0.4.6",
-    "@schematics/package-update": "^0.4.6",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.4.1",
     "chai": "^4.1.2",
