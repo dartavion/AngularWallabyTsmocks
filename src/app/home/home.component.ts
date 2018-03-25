@@ -11,8 +11,13 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/home', { outlets: { characters: 'characters' } }], { skipLocationChange: true });
-    // this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true });
-    // (characterDetails:character-details/r2//characters:characters)
+    this.router.navigate(['/home', {
+      outlets:
+        {
+          characters: 'characters',
+          starWarsWorld: 'star-wars',
+          characterDetails: ['character-details', 'r2']
+        }
+    }], { skipLocationChange: true });
   }
 }

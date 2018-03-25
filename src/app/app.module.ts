@@ -15,6 +15,8 @@ import { PlanetComponent } from './components/planet/planet.component';
 import { CommingSoonComponent } from './components/comming-soon/comming-soon.component';
 import { FourOfourComponent } from './components/four-ofour/four-ofour.component';
 import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
+import { StarWarsWorldModule } from './star-wars-world/star-wars-world.module';
+import { StarWarsWorldComponent } from './components/star-wars-world/star-wars-world/star-wars-world.component';
 
 const appRoutes: Routes = [
   // { path: '**', redirectTo: '/404' },
@@ -55,6 +57,17 @@ const appRoutes: Routes = [
         path: 'planet',
         component: PlanetComponent,
         outlet: 'planets'
+      },
+      {
+        path: 'star-wars',
+        component: StarWarsWorldComponent,
+        outlet: 'starWarsWorld',
+        // children: [
+        //   {
+        //     path: '',
+        //     loadChildren: './star-wars-world/star-wars-world.module#StarWarsWorldModule'
+        //   }
+        // ]
       }
     ]
   }
@@ -70,7 +83,8 @@ const appRoutes: Routes = [
     PlanetComponent,
     CommingSoonComponent,
     FourOfourComponent,
-    CharacterDetailComponent
+    CharacterDetailComponent,
+    StarWarsWorldComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -80,7 +94,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StarWarsWorldModule
   ],
   entryComponents: [
     AppComponent

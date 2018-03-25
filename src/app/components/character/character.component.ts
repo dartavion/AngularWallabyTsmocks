@@ -24,11 +24,12 @@ export class CharacterComponent implements OnInit {
     this.behaviorSubject.next('test');
   }
   goTo(character: string) {
-    // ['/home', { outlets: { characterDetails: ['character-details', 'r2'] } }], { skipLocationChange: true })
-    // this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', character] } }], { skipLocationChange: true });
+    console.log(character);
+    this.router.navigate(['/home', { outlets: { characterDetails: ['character-details', character] } }], { skipLocationChange: true });
   }
   next() {
     this.getCharacters(this.nextUrl);
+    this.router.navigate(['home', { outlets: { characters: 'characters' } }], { skipLocationChange: true });
   }
 
   getSubject() {

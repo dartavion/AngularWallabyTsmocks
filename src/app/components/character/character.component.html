@@ -3,7 +3,9 @@
   <button (click)="next()">Next</button>
 </div>
 <ul>
-  <li class="li" *ngFor="let character of characters">
-    <a (click)="goTo(character.name)">{{character.name}}</a>
+  <li class="li"
+      (click)="goTo(character.name)"
+      *ngFor="let character of characters">
+    <span>{{character.name}}</span>
   </li>
 </ul>
