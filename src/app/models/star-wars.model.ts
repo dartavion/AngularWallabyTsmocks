@@ -11,10 +11,10 @@ export interface Character {
   created?: string;
   edited?: string;
   url?: string;
-  films?: Array<Films>;
-  species?: Array<Species>;
-  starShips?: Array<StarShips>;
-  vehicles?: Array<Vehicles>;
+  films?: Array<string>;
+  species?: Array<string>;
+  starships?: Array<string>;
+  vehicles?: Array<string>;
 }
 export interface Species {
   type?: string;
