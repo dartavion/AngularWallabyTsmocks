@@ -12,7 +12,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 import { CharacterService } from './services/character.service';
 import { environment } from '../../../environments/environment';
-import { CharacterDetailsComponent } from '../../components/character-details/character-details.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
 export const routes: Routes = [
   // {
@@ -23,6 +23,10 @@ export const routes: Routes = [
   {
     path: '',
     component: CharactersComponent
+  },
+  {
+    path: 'characterId',
+    component: CharacterDetailsComponent
   }
 ];
 

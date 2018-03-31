@@ -1,4 +1,4 @@
 <!--<div *ngIf="state">Loading...</div>-->
 <div *ngFor="let character of (characters | async)">
-  <h1>{{character.name}}</h1>
+  <h3 (click)="select($event)">{{character.name}}</h3>
 </div>

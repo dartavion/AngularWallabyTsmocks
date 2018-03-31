@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import * as fromStore from '../../store';
+import { Character } from '../../../../models/star-wars.model';
 
 @Component({
   selector: 'character-details',
@@ -6,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
+  characters$: Observable<Character>;
 
-  constructor() { }
+  constructor(private store: Store<fromStore.CharacterState>) { }
 
   ngOnInit() {
+    this.characters$ = this.store.select(fromStore.getSelectedCharacter);
   }
 
 }

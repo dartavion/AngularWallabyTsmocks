@@ -21,4 +21,8 @@ export class CharactersComponent implements OnInit {
     this.store.dispatch(new fromCharacters.LoadCharacters());
     // this.store.subscribe(characters => this.state = characters.characters.characters.loading);
   }
+
+  select(event) {
+    console.log(event.currentTarget.textContent);
+  }
 }
