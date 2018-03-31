@@ -1,4 +1,5 @@
 <!--<div *ngIf="state">Loading...</div>-->
 <div *ngFor="let character of (characters | async)">
-  <h3 (click)="select($event)">{{character.name}}</h3>
+  <!--<h3 (click)="select($event)">{{character.name}}</h3>-->
+  <a [routerLink]="['/star-wars-world', character.name]">{{character.name}}</a>
 </div>

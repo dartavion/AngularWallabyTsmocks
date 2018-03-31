@@ -15,17 +15,17 @@ import { environment } from '../../../environments/environment';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
 export const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'star',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: '/star-wars-world',
+    pathMatch: 'full'
+  },
   {
     path: '',
     component: CharactersComponent
   },
   {
-    path: 'characterId',
+    path: ':characterId',
     component: CharacterDetailsComponent
   }
 ];

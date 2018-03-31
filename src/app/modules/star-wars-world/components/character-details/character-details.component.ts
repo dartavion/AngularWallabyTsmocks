@@ -10,12 +10,12 @@ import { Character } from '../../../../models/star-wars.model';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
-  characters$: Observable<Character>;
+  character$: Observable<Character>;
 
   constructor(private store: Store<fromStore.CharacterState>) { }
 
   ngOnInit() {
-    this.characters$ = this.store.select(fromStore.getSelectedCharacter);
+    this.character$ = this.store.select(fromStore.getSelectedCharacter);
   }
 
 }

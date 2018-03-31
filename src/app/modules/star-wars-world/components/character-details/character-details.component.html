@@ -1,3 +1,39 @@
-<p>
-  character-details works!
-</p>
+<div>
+  <!--{{character$ | async | json}}-->
+  <ul *ngIf="character$ | async; let character">
+    <li>{{character.name}}</li>
+    <li>height: {{character.height}}</li>
+    <li>weight: {{character.mass}}</li>
+    <li>hair: {{character.hair_color}}</li>
+    <li>skin: {{character.skin_color}}</li>
+    <li>eye: {{character.eye_color}}</li>
+    <li>birth: {{character.birth_year}}</li>
+    <li>gender: {{character.gender}}</li>
+    <li>howe world: {{character.homeworld}}</li>
+    <li>Home Worlds:
+      <ul>
+        <li *ngFor="let film of character.films">
+          {{film}}
+        </li>
+      </ul>
+    </li>
+    <li>
+    <li>Species:
+      <ul>
+        <li *ngFor="let creature of character.species">
+          {{creature}}
+        </li>
+      </ul>
+    </li>
+    <li>Starships:
+      <ul>
+        <li *ngFor="let ship of character.starships">
+          {{ship}}
+        </li>
+      </ul>
+    </li>
+    <li>created: {{character.created}}</li>
+    <li>edited: {{character.edited}}</li>
+    <li>url: {{character.url}}</li>
+  </ul>
+</div>
