@@ -1,22 +1,20 @@
 import * as fromCharacters from '../actions/characters.actions';
-import { Character } from '../../../app/models/star-wars.model';
+import { Character } from 'app/models/star-wars.model';
 
 export interface CharactersState {
-  data: Character[];
+  entities: {[name: string]: Character};
   loaded: boolean;
   loading: boolean;
 }
 
 export const initialState: CharactersState = {
-  data: [],
+  entities: {},
   loaded: false,
   loading: false
 };
 
-export function reducer(
-    state = initialState,
-    action: fromCharacters.CharacterActions
-  ): CharactersState {
+export function reducer(state = initialState,
+                        action: fromCharacters.CharacterActions): CharactersState {
 
   switch (action.type) {
     case fromCharacters.CharacterActionTypes.LoadCharacters: {
@@ -26,12 +24,20 @@ export function reducer(
       };
     }
     case fromCharacters.CharacterActionTypes.LoadCharactersSuccess: {
-      const data = action.payload;
+      const characters = action.payload;
+      const entities = characters.reduce((ents: {[name: string]: Character}, character: Character) => {
+        return {
+          ...ents,
+          [character.name]: character
+        };
+      }, {
+        ...state.entities
+      });
       return {
         ...state,
         loading: false,
         loaded: true,
-        data
+        entities
       };
     }
     case fromCharacters.CharacterActionTypes.LoadCharactersFail: {
@@ -45,8 +51,9 @@ export function reducer(
       return state;
   }
 }
+
 export const getCharactersLoading = (state: CharactersState) => state.loading;
 export const getCharactersLoaded = (state: CharactersState) => state.loaded;
-export const getCharacters = (state: CharactersState) => state.data;
+export const getCharactersEntities = (state: CharactersState) => state.entities;
 
 

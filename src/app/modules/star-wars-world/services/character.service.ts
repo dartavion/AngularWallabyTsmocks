@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-
 @Injectable()
 export class CharacterService extends Characters {
   constructor(private http: HttpClient) {
@@ -17,9 +16,22 @@ export class CharacterService extends Characters {
 
     return this
       .http
-      .get(`${this.baseUrl}/people/?search`, { ...headers })
+      .get(`${this.baseUrl}/people/?search`, {headers: headers})
       .pipe(
-        tap(data => console.log(data)),
+        // tap(data => console.log(data)),
+        map(characters => characters)
+      );
+  }
+
+  getPokiCharacters(): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+
+    return this
+      .http
+      .get(`${this.pokiUrl}/pokemon`, {headers: headers})
+      .pipe(
+        // tap(data => console.log(data)),
         map(characters => characters)
       );
   }

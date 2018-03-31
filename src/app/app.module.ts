@@ -4,6 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { MetaReducer, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { reducers, CustomSerializer } from './store';
+import { storeFreeze } from 'ngrx-store-freeze';
+
 import { AppComponent } from './app.component';
 import { PhoneComponent } from './components/phone/phone.component';
 import { PhonePipe } from './pipes/phone.pipe';
@@ -16,12 +24,7 @@ import { CommingSoonComponent } from './components/comming-soon/comming-soon.com
 import { FourOfourComponent } from './components/four-ofour/four-ofour.component';
 import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
 import { StarWarsWorldComponent } from './components/star-wars-world/star-wars-world/star-wars-world.component';
-import { MetaReducer, StoreModule } from '@ngrx/store';
-
 import { environment } from '../environments/environment';
-import { storeFreeze } from 'ngrx-store-freeze';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
   : [];
@@ -36,7 +39,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'star-wars-world',
-    loadChildren: 'star-wars-world/star-wars-world.module#StarWarsWorldModule'
+    loadChildren: 'app/modules/star-wars-world/star-wars-world.module#StarWarsWorldModule'
   },
   {
     path: 'phone',
@@ -87,7 +90,8 @@ const appRoutes: Routes = [
     StarWarsWorldComponent
   ],
   imports: [
-    StoreModule.forRoot({}, { metaReducers }),
+    StoreRouterConnectingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     RouterModule.forRoot(
       appRoutes,
@@ -107,7 +111,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     FeatureToggleGuardGuard,
-    SwapiService
+    SwapiService,
+    { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],
   bootstrap: [
     AppComponent

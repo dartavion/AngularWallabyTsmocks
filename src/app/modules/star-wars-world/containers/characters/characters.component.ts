@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromCharacters from '../../store';
-import { Character } from '../../../app/models/star-wars.model';
+import { CharacterService } from '../../services/character.service';
+import { Character } from '../../../../models/star-wars.model';
 
 @Component({
   selector: 'app-characters',
@@ -11,11 +12,13 @@ import { Character } from '../../../app/models/star-wars.model';
 })
 export class CharactersComponent implements OnInit {
   characters: Observable<Character[]>;
-
-  constructor(private store: Store<fromCharacters.CharacterState>) { }
+  state = true;
+  constructor(private store: Store<fromCharacters.CharacterState>, private charsService: CharacterService) { }
 
   ngOnInit() {
+    this.charsService.getPokiCharacters().subscribe(data => console.log(data));
     this.characters = this.store.select(fromCharacters.getAllCharacters);
     this.store.dispatch(new fromCharacters.LoadCharacters());
+    // this.store.subscribe(characters => this.state = characters.characters.characters.loading);
   }
 }

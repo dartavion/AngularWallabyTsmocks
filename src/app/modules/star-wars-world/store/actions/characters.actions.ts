@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Character } from '../../../app/models/star-wars.model';
+import { Character } from 'app/models/star-wars.model';
 
 export enum CharacterActionTypes {
   LoadCharacters = '[Characters] Load Characters',
