@@ -15,6 +15,7 @@ export class CharacterDetailsComponent implements OnInit {
   constructor(private store: Store<fromStore.CharacterState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new fromStore.LoadStarShip())
     this.character$ = this.store.select(fromStore.getSelectedCharacter);
   }
 

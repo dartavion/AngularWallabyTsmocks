@@ -8,6 +8,7 @@ export enum CharacterActionTypes {
 }
 
 export class LoadCharacters implements Action {
+  payload: undefined;
   readonly type = CharacterActionTypes.LoadCharacters;
 }
 

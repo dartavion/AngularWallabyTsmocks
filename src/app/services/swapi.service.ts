@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { StarShip } from '../models/star-ship';
 
 
 @Injectable()
@@ -44,6 +45,14 @@ export class SwapiService {
     const path = `${this.baseUrl}api/people`;
     return this.http
       .get(`${this.baseUrl}/api/people${characterId}`, { ...headers });
+  }
+
+  getStarShips(url?: string): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json');
+    const path = url ? url : `${this.baseUrl}/starships`;
+    return this.http
+      .get(path, {...headers});
   }
 }
 

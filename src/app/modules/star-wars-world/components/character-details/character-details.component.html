@@ -1,6 +1,7 @@
 <div>
+
   <!--{{character$ | async | json}}-->
-  <ul *ngIf="character$ | async; let character">
+  <ul *ngIf="character$ | async as character">
     <li>{{character.name}}</li>
     <li>height: {{character.height}}</li>
     <li>weight: {{character.mass}}</li>
