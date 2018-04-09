@@ -13,6 +13,7 @@ import * as startWarsCharactersJson from '../../api/json/star-wars.json';
 @Injectable()
 export class FakeBackendInterceptorService implements HttpInterceptor {
   // http://jasonwatmore.com/post/2017/12/15/angular-5-mock-backend-example-for-backendless-development
+  // https://github.com/cornflourblue/angular2-registration-login-example-cli
   constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
