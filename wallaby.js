@@ -22,8 +22,6 @@ module.exports = function (wallaby) {
         {test: /\.ts$/, loader: '@ngtools/webpack', include: /node_modules/, query: {tsConfigPath: 'tsconfig.json'}},
         {test: /\.js$/, loader: 'angular2-template-loader', exclude: /node_modules/},
         {test: /\.json$/, loader: 'json-loader'},
-        {test: /\.styl$/, loaders: ['raw-loader', 'stylus-loader']},
-        {test: /\.less$/, loaders: ['raw-loader', 'less-loader']},
         {test: /\.scss$|\.sass$/, loaders: ['raw-loader', 'sass-loader']},
         {test: /\.(jpg|png)$/, loader: 'url-loader?limit=128000'}
       ]

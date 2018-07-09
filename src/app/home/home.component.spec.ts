@@ -12,7 +12,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 
+      declarations: [
         HomeComponent,
         PhonePipe
       ],
@@ -20,12 +20,16 @@ describe('HomeComponent', () => {
         HttpClientTestingModule
       ],
       providers: [
-        {provide: SwapiService, useValue: {
-          getCharacters: () => { return Observable.of([])}
-        }}
+        {
+          provide: SwapiService, useValue: {
+            getCharacters: () => {
+              return Observable.of([]);
+            }
+          }
+        }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
